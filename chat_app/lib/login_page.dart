@@ -72,7 +72,7 @@ class LoginPage extends StatelessWidget {
                 width: 50,
                 /// Move color inside "decoration" to add both color and decoration.
                 //color: Colors.blue,
-                /// Instead inserting dancing parrot into Container.
+                /// Instead inserting dancing parrot image into Container.
                 //child: FlutterLogo(),
                 /// Adds padding around the child element. In this case "FlutterLogo".
                 padding: EdgeInsets.all(10),
