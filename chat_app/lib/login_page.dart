@@ -15,23 +15,27 @@ class LoginPage extends StatelessWidget {
       ),
       body: Column(
         children: [
-          Text(
-            'Let\'s sign you in!',
-            style: TextStyle(
-                fontSize: 30,
-                color: Colors.brown,
-                fontWeight: FontWeight.bold,
-                letterSpacing: 0.5),
+          Center(
+            child: Text(
+              'Let\'s sign you in!',
+              style: TextStyle(
+                  fontSize: 30,
+                  color: Colors.brown,
+                  fontWeight: FontWeight.bold,
+                  letterSpacing: 0.5),
+            ),
           ),
-          Text(
-            'Welcome back! \n You\'ve been missed!',
-            style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 20,
-                color: Colors.blueGrey),
+          Center(
+            child: Text(
+              'Welcome back! \n You\'ve been missed!',
+              style: TextStyle(
+                  fontWeight: FontWeight.bold,
+                  fontSize: 20,
+                  color: Colors.blueGrey),
+            ),
           ),
           Image.network(
-            'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+            'https://media4.giphy.com/media/l3q2zVr6cu95nF6O4/giphy.gif?cid=6c09b952ksvlsl0pp4bcglqdlidiymj7996pn8wickkbg4i4&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g',
             height: 200,
           ),
           Container(
@@ -44,7 +48,7 @@ class LoginPage extends StatelessWidget {
                 image: DecorationImage(
                   fit: BoxFit.fitHeight,
                   image: NetworkImage(
-                      'https://3009709.youcanlearnit.net/Alien_LIL_131338.png'),
+                      'https://media4.giphy.com/media/l3q2zVr6cu95nF6O4/giphy.gif?cid=6c09b952ksvlsl0pp4bcglqdlidiymj7996pn8wickkbg4i4&ep=v1_internal_gif_by_id&rid=giphy.gif&ct=g'),
                 ),
                 color: Colors.blue,
                 borderRadius: BorderRadius.circular(24)),
