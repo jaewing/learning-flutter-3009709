@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3447151b-1a67-41a1-b9bc-5bb73b8beb7c" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+    <list default="true" id="3447151b-1a67-41a1-b9bc-5bb73b8beb7c" name="Changes" comment="Implemented the building blocks of a basic chat application.">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/android/app/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/android/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/android/settings.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/chat_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/chat_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/login_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/chat_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/main.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/chat_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -50,6 +56,7 @@
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "cf.first.check.clang-format": "false",
     "cidr.known.project.marker": "true",
+    "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "03__04__b",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
@@ -66,5 +73,9 @@
       <updated>1734321414348</updated>
     </task>
     <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Implemented the building blocks of a basic chat application." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the building blocks of a basic chat application." />
   </component>
 </project>
