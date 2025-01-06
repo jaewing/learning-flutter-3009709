@@ -4,16 +4,8 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3447151b-1a67-41a1-b9bc-5bb73b8beb7c" name="Changes" comment="Implemented the building blocks of a basic chat application.">
+    <list default="true" id="3447151b-1a67-41a1-b9bc-5bb73b8beb7c" name="Changes" comment="Implemented the alignment and spacing for chat app widgets.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/android/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/android/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/android/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/android/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/android/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/android/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/chat_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/chat_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/login_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/login_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/chat_app/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/chat_app/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +30,9 @@
     &quot;accountId&quot;: &quot;dbec7d76-0c60-44f0-9f03-489d582e546a&quot;
   }
 }</component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 4
 }</component>
@@ -72,10 +67,20 @@
       <option name="presentableId" value="Default" />
       <updated>1734321414348</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implemented the alignment and spacing for chat app widgets.">
+      <option name="closed" value="true" />
+      <created>1736036509099</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1736036509099</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Implemented the building blocks of a basic chat application." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented the building blocks of a basic chat application." />
+    <MESSAGE value="Implemented the alignment and spacing for chat app widgets." />
+    <option name="LAST_COMMIT_MESSAGE" value="Implemented the alignment and spacing for chat app widgets." />
   </component>
 </project>
