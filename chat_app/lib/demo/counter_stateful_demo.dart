@@ -1,5 +1,15 @@
 import 'package:flutter/material.dart';
 
+class Example extends StatelessWidget {
+  const Example({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+
 class CounterStateful extends StatefulWidget {
   /// Any properties you want to change/access outside of
   /// the _CounterStatefulState need to be declared here.
@@ -17,11 +27,15 @@ class CounterStateful extends StatefulWidget {
   CounterStateful({Key? key, required this.buttonColor}) : super(key: key);
 
   @override
+  State<CounterStateful> createState() => _CounterStatefulState();
+  /// Above and below accomplish same result.
+  /*
   State<CounterStateful> createState() {
     State<CounterStateful> stateClassAssociatedWithThisWidget =
         _CounterStatefulState();
     return stateClassAssociatedWithThisWidget;
   }
+  */
 }
 
 class _CounterStatefulState extends State<CounterStateful> {
