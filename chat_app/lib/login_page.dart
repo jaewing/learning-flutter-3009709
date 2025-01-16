@@ -3,19 +3,32 @@ import 'package:flutter/material.dart';
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
+  /// We create a final private variable here to
+  /// hold the form key which is Global (same
+  /// value across entire app). _formkey holds
+  /// the State object of the Form widget.
   final _formkey = GlobalKey<FormState>();
 
   //TODO: Validate email and username values
   void loginUser() {
-    if (_formkey.currentState != null && _formkey.currentState!.validate()) {
+    /// "validate()" method validates every FormField that is a descendant
+    /// of the "Form" widget. returns "True" if there are no errors among
+    /// all of the FormField children of Form.
+    ///
+    /// Exclamation mark tells the framework that the currentState is
+    /// NOT going to be null. This assertion is true because we check if
+    /// currentState is null before invoking "validate()".
+    if(_formkey.currentState!=null && _formkey.currentState!.validate()){
       print(userNameController.text);
       print(passwordController.text);
 
       print('login successful!');
-    } else {
+    }
+    else{
       print('not successful!');
     }
   }
+
 
   final userNameController = TextEditingController();
   final passwordController = TextEditingController();
@@ -48,33 +61,40 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
               Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+                'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif',
                 height: 200,
               ),
 
               //TODO: Add Username & Password text fields
-
+              /// TextFormField is a drop in replacement widget for TextField.
+              /// We add a parent widget "Form" to all of our TextFormField
+              /// widgets we desire with a "Column" (or Row) widget in between
+              /// because Form only takes one child. 
               Form(
+                /// Key we created holding the State object
+                /// of the "Form" widget.
                 key: _formkey,
                 child: Column(
                   children: [
                     TextFormField(
-                      validator: (value) {
-                        if (value != null &&
-                            value.isNotEmpty &&
-                            value.length < 5) {
-                          return "Your username should be more than 5 characters";
-                        } else if (value != null && value.isEmpty) {
-                          return "Please type your username";
+                      /// Takes a callback function
+                      validator: (value){
+                        if(value!=null && value.isNotEmpty && value.length < 5){
+                          return "Your username should be more than 5 characters.";
                         }
+                        else if(value!=null && value.isEmpty){
+                          return "Please type your username.";
+                        }
+                        /// else case
                         return null;
                       },
                       controller: userNameController,
                       decoration: InputDecoration(
-                          hintText: 'Add your username',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder()),
+                        hintText: 'Add your username',
+                        hintStyle: TextStyle(color: Colors.blueGrey),
+                        border: OutlineInputBorder()),
                     ),
+                    /// Creating empty space between the two fields.
                     SizedBox(
                       height: 24,
                     ),
@@ -82,16 +102,19 @@ class LoginPage extends StatelessWidget {
                       controller: passwordController,
                       obscureText: true,
                       decoration: InputDecoration(
-                          hintText: 'Type your password',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder()),
+                        hintText: 'Type your Password',
+                        hintStyle: TextStyle(color: Colors.blueGrey),
+                        border: OutlineInputBorder()),
                     ),
                   ],
                 ),
               ),
+              /// Creating empty space between Login button and
+              /// the Password text entry box.
               SizedBox(
-                height: 24,
+                height: 14,
               ),
+
               ElevatedButton(
                   onPressed: loginUser,
                   child: Text(
