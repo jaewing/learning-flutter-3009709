@@ -12,7 +12,19 @@ class LoginPage extends StatelessWidget {
       print(passwordController.text);
 
       Navigator.push(
-          context, MaterialPageRoute(builder: (context) => ChatPage()));
+          /// Here we have to provide an argument for our ChatPage constructor
+          /// since we required a "username" property to be specified. We
+          /// pull the username from the userNameController property so its
+          /// passed onto the ChatPage when its pushed.
+          context,
+          MaterialPageRoute(
+              builder: (context) =>
+              /// This is a simple example.
+              /// We can pass whole objects to another route
+              /// which could be extremely useful.
+                  ChatPage(username: userNameController.text)
+          )
+      );
       print('login successful!');
     } else {
       print('not successful!');
@@ -50,7 +62,7 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
               Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+                'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif',
                 height: 200,
               ),
               Form(

@@ -3,7 +3,12 @@ import 'package:chat_app/widgets/chat_input.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
+  /// By adding this as a property to ChatPage,
+  /// we are able to pass this variable and its
+  /// value from one route to another.
+  final String username;
+
+  const ChatPage({Key? key, required this.username}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,8 +16,8 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        //TODO: Remove harcoded name here
-        title: Text('Hi Pooja!'),
+        //TODOne: Remove harcoded name here
+        title: Text('Chat with ${username}!'),
         actions: [
           IconButton(
               onPressed: () {
@@ -25,7 +30,7 @@ class ChatPage extends StatelessWidget {
       body: Column(
         children: [
           Expanded(
-              //TODO: Create a dynamic sized list
+              //TODOne: Create a dynamic sized list
               child: ListView.builder(
                   itemCount: 10,
                   itemBuilder: (context, index) {
