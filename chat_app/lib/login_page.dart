@@ -12,12 +12,14 @@ class LoginPage extends StatelessWidget {
       print(passwordController.text);
 
       //TODO: Add Named Routes instead of anonymous routes
-      Navigator.push(
+      /// Here we use a Named Route
+      Navigator.pushNamed(
           context,
-          MaterialPageRoute(
-              builder: (context) => ChatPage(
-                    username: userNameController.text,
-                  )));
+          /// Named Route we defined in main.dart
+          '/chat',
+          /// Here we specify the data tha we want to be
+          /// associated with the route we push.
+          arguments: '${userNameController.text}');
       print('login successful!');
     } else {
       print('not successful!');
@@ -55,7 +57,7 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
               Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+                'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif',
                 height: 200,
               ),
               Form(

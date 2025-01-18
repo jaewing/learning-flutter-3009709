@@ -15,7 +15,18 @@ class ChatApp extends StatelessWidget {
           primarySwatch: Colors.deepPurple,
           appBarTheme: AppBarTheme(
               backgroundColor: Colors.blue, foregroundColor: Colors.black)),
-      home: LoginPage(),
+        home: LoginPage(),
+
+        /// Takes a "map" of key and value.
+        /// Key is name of route.
+        /// Value is widget associated with
+        /// route name.
+        ///
+        /// Named Route
+        routes: {
+          '/chat' : (context) => ChatPage(),
+
+        }
     );
   }
 }
