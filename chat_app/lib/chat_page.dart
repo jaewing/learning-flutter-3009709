@@ -11,12 +11,15 @@ class ChatPage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
-        title: Text('Hi Pooja!'),
+        title: Text('Chat with Issac!'),
         actions: [
           IconButton(
               onPressed: () {
                 //TODO: Navigate back to LoginPage on logout
-
+                /// This pops the current route from the
+                /// imperative Navigator stack. This returns
+                /// us to the previous route in the stack.
+                Navigator.pop(context);
                 print('Icon pressed!');
               },
               icon: Icon(Icons.logout))
@@ -33,7 +36,7 @@ class ChatPage extends StatelessWidget {
                         alignment: index % 2 == 0
                             ? Alignment.centerLeft
                             : Alignment.centerRight,
-                        message: "Hello, this is Pooja!");
+                        message: "Hi Isaac!");
                   })),
           ChatInput(),
         ],

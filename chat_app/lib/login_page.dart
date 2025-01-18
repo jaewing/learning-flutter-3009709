@@ -1,3 +1,4 @@
+import 'package:chat_app/chat_page.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -5,12 +6,30 @@ class LoginPage extends StatelessWidget {
 
   final _formkey = GlobalKey<FormState>();
 
-  void loginUser() {
+  void loginUser(context) {
     if (_formkey.currentState != null && _formkey.currentState!.validate()) {
       print(userNameController.text);
       print(passwordController.text);
 
       //TODO: Navigate to ChatPage on successful login
+      /// Navigator widget allows you to change between pages (screens).
+      /// These pages are called "routes" in Flutter.
+      /// We navigate from one "Route" to another "Route"
+      /// to change between our login screen and our chat
+      /// screen.
+      ///
+      /// Navigator widget manages a stack of routes.
+      /// Provides two options to manage the stack,
+      /// declarative and imperative.
+      ///
+      /// We will use imperative. 
+
+      /// Here we push the ChatPage onto the imperative
+      /// Navigator stack which will change us from the
+      /// login page to the chat page.
+      Navigator.push(context, MaterialPageRoute(
+          builder: (context) => ChatPage())
+      );
       print('login successful!');
     } else {
       print('not successful!');
@@ -48,7 +67,7 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
               Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+                'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif',
                 height: 200,
               ),
 
@@ -93,7 +112,9 @@ class LoginPage extends StatelessWidget {
                 height: 24,
               ),
               ElevatedButton(
-                  onPressed: loginUser,
+                  onPressed: (){
+                    loginUser(context);
+                  },
                   child: Text(
                     'Login',
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
