@@ -12,7 +12,15 @@ class LoginPage extends StatelessWidget {
       print(passwordController.text);
 
       //TODO: Replace the route instead of pushing
-      Navigator.pushNamed(context, '/chat',
+      /// Here we implement the idea of replacing a route
+      /// with another. This prevents a user from going back
+      /// to the previous page if you do NOT want them to.
+      ///
+      /// No longer will be able to access "back" button.
+      ///
+      /// When you pop after doing this, you will get a blank
+      /// screen.
+      Navigator.pushReplacementNamed(context, '/chat',
           arguments: '${userNameController.text}');
       print('login successful!');
     } else {
@@ -51,7 +59,7 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
               Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+                'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif',
                 height: 200,
               ),
               Form(

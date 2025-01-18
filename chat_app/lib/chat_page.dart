@@ -18,7 +18,19 @@ class ChatPage extends StatelessWidget {
         actions: [
           IconButton(
               onPressed: () {
-                Navigator.pop(context);
+                /// Using "maybePop" instead of "pop"
+                /// will prevent you from popping the
+                /// last "route" on the stack.
+                // Navigator.maybePop(context);
+                // print('Icon pressed!');
+                /// "popAndPushNamed" pushes the route you
+                /// specify and then completely disposes of
+                /// the previous route. Perfect for the
+                /// case of "logging out" of account.
+                ///
+                /// '/' is the named route for the "home" page you
+                /// specified in "main.dart"
+                Navigator.popAndPushNamed(context, '/');
                 print('Icon pressed!');
               },
               icon: Icon(Icons.logout))
