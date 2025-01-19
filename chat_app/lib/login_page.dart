@@ -1,4 +1,6 @@
 import 'package:chat_app/chat_page.dart';
+import 'package:chat_app/utils/textfield_styles.dart';
+import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
 
 class LoginPage extends StatelessWidget {
@@ -51,7 +53,7 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
               Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+                'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif',
                 height: 200,
               ),
               //TODO: Extract the common text-fields out to a reusable widget
@@ -59,7 +61,15 @@ class LoginPage extends StatelessWidget {
                 key: _formkey,
                 child: Column(
                   children: [
-                    TextFormField(
+                    /// Only need to provide the properties you
+                    /// require when making a Custom widget.
+                    ///
+                    /// Here we override the "validator"
+                    /// and "controller" properties that
+                    /// we defined differently
+                    /// in "login_text_field.dart".
+                    LoginTextField(
+                      hintText: "Enter your username",
                       validator: (value) {
                         if (value != null &&
                             value.isNotEmpty &&
@@ -71,21 +81,16 @@ class LoginPage extends StatelessWidget {
                         return null;
                       },
                       controller: userNameController,
-                      decoration: InputDecoration(
-                          hintText: 'Add your username',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder()),
                     ),
                     SizedBox(
                       height: 24,
                     ),
-                    TextFormField(
+                    /// Only need to provide the properties you
+                    /// require when making a Custom widget.
+                    LoginTextField(
+                      hasAsterisks: true,
                       controller: passwordController,
-                      obscureText: true,
-                      decoration: InputDecoration(
-                          hintText: 'Type your password',
-                          hintStyle: TextStyle(color: Colors.blueGrey),
-                          border: OutlineInputBorder()),
+                      hintText: 'Enter your password',
                     ),
                   ],
                 ),
