@@ -51,9 +51,15 @@ class LoginPage extends StatelessWidget {
                     fontSize: 20,
                     color: Colors.blueGrey),
               ),
-              //TODO: Add correct asset file
-              Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+              //TODOne: Add correct asset file
+              /// Here we use "Image.asset" instead of
+              /// "Image.network" to allow us to pull
+              /// an image from our asset folder. Assets
+              /// are defined in our "pubspec.yaml" file.
+              Image.asset(
+                /// Seems optional to include the "assets/"
+                /// before the image.
+                'assets/disco_parrot.gif',
                 height: 200,
               ),
               Form(

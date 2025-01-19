@@ -20,8 +20,10 @@ class ChatBubble extends StatelessWidget {
               '$message',
               style: TextStyle(fontSize: 20, color: Colors.white),
             ),
-            Image.network(
-              'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+            Image.asset(
+              /// Seems optional to include the "assets/"
+              /// before the image.
+              'assets/disco_parrot.gif',
               height: 200,
             )
           ],
