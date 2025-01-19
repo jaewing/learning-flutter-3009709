@@ -1,3 +1,4 @@
+import 'package:chat_app/utils/spaces.dart';
 import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
@@ -51,7 +52,7 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
               Image.network(
-                'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
+                'https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif',
                 height: 200,
               ),
               //TODO: Extract the common text-fields out to a reusable widget
@@ -73,9 +74,7 @@ class LoginPage extends StatelessWidget {
                       },
                       controller: userNameController,
                     ),
-                    SizedBox(
-                      height: 24,
-                    ),
+                    verticalSpacing(24),
                     LoginTextField(
                       hasAsterisks: true,
                       controller: passwordController,
@@ -84,9 +83,7 @@ class LoginPage extends StatelessWidget {
                   ],
                 ),
               ),
-              SizedBox(
-                height: 24,
-              ),
+              verticalSpacing(24),
               ElevatedButton(
                   onPressed: () {
                     loginUser(context);
