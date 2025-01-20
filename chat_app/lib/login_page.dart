@@ -1,14 +1,20 @@
 import 'package:chat_app/utils/spaces.dart';
 import 'package:chat_app/utils/textfield_styles.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:flutter/material.dart';
+
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
   final _formkey = GlobalKey<FormState>();
+  /// argument you pass launchUrl method must be of
+  /// "Uri" type.
+  final Uri _url = Uri.parse('https://www.youtube.com/');
 
-  void loginUser(context) {
+
+    void loginUser(context) {
     if (_formkey.currentState != null && _formkey.currentState!.validate()) {
       print(userNameController.text);
       print(passwordController.text);
@@ -92,14 +98,35 @@ class LoginPage extends StatelessWidget {
                     style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
                   )),
               GestureDetector(
-                onTap: () {
+                onTap: () async{
                   //todo: Navigate to browser
+                  /// Here we will implement the use of an external
+                  /// plugin called "url_launcher" from pub.dev.
+                  ///
+                  /// This plugin is able to do a whole host of
+                  /// things including sending SMS, email, making
+                  /// phone call, etc. in addition to opening URLs.
+                  ///
+                  /// "launchUrl" requires a "Uri" type variable
+                  /// to be assigned. Previous implementation was
+                  /// "launch" and could accept a String. This is
+                  /// no longer true.
+                  ///
+                  /// Note that we added the "async" keyword to our
+                  /// onTap callback. This is a necessary pairing
+                  /// with the "await" keyword. await keyword is a
+                  /// declarative way of defining an asynchronous
+                  /// function. "await" can only be used within
+                  /// an asynchronous function "async".
+                  if(!await launchUrl(_url)){
+                    throw Exception('Could not launch $_url');
+                  }
                   print('Link clicked!');
                 },
                 child: Column(
                   children: [
                     Text('Find us on'),
-                    Text('https://poojabhaumik.com'),
+                    Text('$_url'),
                   ],
                 ),
               )
