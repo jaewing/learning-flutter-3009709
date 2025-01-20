@@ -1,10 +1,26 @@
+import 'package:chat_app/models/chat_message_entity.dart';
 import 'package:flutter/material.dart';
 
 class ChatBubble extends StatelessWidget {
-  final String message;
+  /// This quickly will become out of hand
+  /// with too many class properties to
+  /// keep track of.
+  ///
+  /// We will instead implement the concept
+  /// of modeling "entities".
+  ///
+  /// The basic concept is we can create a class
+  /// of "entities" that we can then instantiate
+  /// over and over without repeated copy and
+  /// paste.
+  ///
+  /// Here we create a variable "entity" of
+  /// ChatMessageEntity type that will allow us
+  /// to hold all our class properties.
+  final ChatMessageEntity entity;
   final Alignment alignment;
 
-  const ChatBubble({Key? key, required this.alignment, required this.message})
+  const ChatBubble({Key? key, required this.entity, required this.alignment})
       : super(key: key);
 
   @override
@@ -17,13 +33,18 @@ class ChatBubble extends StatelessWidget {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              '$message',
+              /// From custom entity class.
+              '${entity.text}',
               style: TextStyle(fontSize: 20, color: Colors.white),
             ),
-            Image.network(
-              'https://3009709.youcanlearnit.net/Alien_LIL_131338.png',
-              height: 200,
-            )
+
+            /// Check to make sure the imageUrl is populated.
+            if (entity.imageUrl != null)
+              Image.network(
+                /// From custom entity class.
+                '${entity.imageUrl}',
+                height: 200,
+              )
           ],
         ),
         margin: EdgeInsets.all(50),
