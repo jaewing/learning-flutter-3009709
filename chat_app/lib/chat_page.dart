@@ -4,9 +4,35 @@ import 'package:chat_app/widgets/chat_input.dart';
 import 'package:flutter/material.dart';
 
 class ChatPage extends StatelessWidget {
-  const ChatPage({Key? key}) : super(key: key);
+  ChatPage({Key? key}) : super(key: key);
 
-
+  /// Here we specify a concrete type for
+  /// our list to make sure we don't
+  /// populate it with an items that are
+  /// NOT of "ChatMessageEntity" type.
+  List<ChatMessageEntity> _messages = [
+    ChatMessageEntity(
+      id: '1234',
+      text: 'first text',
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+      author: Author(userName: 'James'),
+      imageUrl: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif"
+    ),
+    ChatMessageEntity(
+      id: '1234',
+      text: 'second text',
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+      author: Author(userName: 'Emily'),
+      imageUrl: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif"
+    ),
+    ChatMessageEntity(
+      id: '1234',
+      text: 'third text',
+      createdAt: DateTime.now().millisecondsSinceEpoch,
+      author: Author(userName: 'James'),
+      imageUrl: "https://media1.giphy.com/media/v1.Y2lkPTc5MGI3NjExeGdzMGdkbnR3cHJ5bTdhODdoaHhlcWJ0bHZnem8zaGdndnk4cjU3NyZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/l3q2zVr6cu95nF6O4/giphy.gif"
+    )
+  ];
   //TODO: Create mock list
   @override
   Widget build(BuildContext context) {
@@ -30,17 +56,14 @@ class ChatPage extends StatelessWidget {
         children: [
           Expanded(
               child: ListView.builder(
-                  itemCount: 10,
+                  itemCount: _messages.length,
                   itemBuilder: (context, index) {
                     return ChatBubble(
-                        alignment: index % 2 == 0
-                            ? Alignment.centerLeft
-                            : Alignment.centerRight,
-                        entity: ChatMessageEntity(
-                            id: '1234',
-                            text: 'Hello this is Pooja!!!!!',
-                            createdAt: DateTime.now().millisecondsSinceEpoch,
-                            author: Author(userName: 'poojab26')));
+                        alignment: _messages[index].author.userName == 'James'
+                            ? Alignment.centerRight
+                            : Alignment.centerLeft,
+                        entity: _messages[index],
+                    );
                   })),
           ChatInput(),
         ],

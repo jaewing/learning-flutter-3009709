@@ -34,6 +34,10 @@ class LoginPage extends StatelessWidget {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
+          /// Implicitly Column is only to take List of Widgets
+          /// for children. This is because "children" is a
+          /// List data type with concrete type <Widget> specified
+          /// for it.
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.stretch,
