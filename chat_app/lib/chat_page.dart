@@ -34,6 +34,16 @@ class _ChatPageState extends State<ChatPage> {
     });
   }
 
+  /// We need to pass this method to the child
+  /// of "chat_page" which is "chat_input" to
+  /// allow the child to call it.
+  onMessageSent(ChatMessageEntity entity){
+    _messages.add(entity);
+    setState(() {
+
+    });
+  }
+
   @override
   void initState() {
     _loadInitialMessages();
@@ -70,7 +80,9 @@ class _ChatPageState extends State<ChatPage> {
                             : Alignment.centerLeft,
                         entity: _messages[index]);
                   })),
-          ChatInput(),
+          ChatInput(
+            onSubmit: onMessageSent,
+          ),
         ],
       ),
     );
