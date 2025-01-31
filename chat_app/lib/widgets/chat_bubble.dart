@@ -13,6 +13,15 @@ class ChatBubble extends StatelessWidget {
     return Align(
       alignment: alignment,
       child: Container(
+        /// BoxConstraints allows you to add layout constraints
+        /// to your UI layouts. BoxConstraints has a property
+        /// called "maxWidth" that allows you to specify the
+        /// maximum width of your Container. Without specifying
+        /// a minimum width, it will shrink to fit around the
+        /// child of Container.
+        constraints: BoxConstraints(
+            maxWidth: MediaQuery.of(context).size.width * 0.5
+        ),
         //TODO: Fix chat bubble width
         padding: EdgeInsets.all(24),
         child: Column(
