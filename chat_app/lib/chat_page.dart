@@ -80,6 +80,10 @@ class _ChatPageState extends State<ChatPage> {
                             : Alignment.centerLeft,
                         entity: _messages[index]);
                   })),
+          /// Here we call the child Widget constructor
+          /// and we pass the method to the child via
+          /// assignment to the required property of
+          /// ChatInput "onSubmit".
           ChatInput(
             onSubmit: onMessageSent,
           ),

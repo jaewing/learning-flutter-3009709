@@ -21,6 +21,9 @@ class ChatInput extends StatelessWidget {
         id: '244',
         createdAt: DateTime.now().millisecondsSinceEpoch,
         author: Author(userName: 'poojab26'));
+
+    /// Here we call the onSubmit method which will
+    /// be the parent method passed down.
     onSubmit(newChatMessage);
   }
 
