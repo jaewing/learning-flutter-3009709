@@ -14,24 +14,57 @@ class ChatPage extends StatefulWidget {
 }
 
 class _ChatPageState extends State<ChatPage> {
+  /// Code restaurant example.
+  /// It would look something like below in
+  /// idea.
+  //waiter.getmenu();
+  //waite.getTodaySpecialDish();
+
+
   //initiate state of messages
   List<ChatMessageEntity> _messages = [];
 
+  /// Here we have an example of an async function.
   _loadInitialMessages() async {
-    final response = await rootBundle.loadString('assets/mock_messages.json');
+    /// If we remove "await" keyword error occurs because
+    /// loadString returns an object of "Future<String>" type.
+    /// "Future" type is a result of an async computation.
+    ///
+    /// "await" tells the future function "loadString"
+    /// to wait until it gets the "final" string
+    /// result only. Otherwise "loadString" would
+    /// return a Future<String> type object.
+    ///
+    /// Entire code block inside the "then" method would go
+    /// below the await line for that implementation.
+    //final String response = await rootBundle.loadString('assets/mock_messages.json');
 
-    final List<dynamic> decodedList = jsonDecode(response) as List;
+    /// JavaScript style way.
+    ///
+    /// Able to nest ".then" methods.
+    rootBundle.loadString('assets/mock_messages.json').then((response){
+      final List<dynamic> decodedList = jsonDecode(response) as List;
 
-    final List<ChatMessageEntity> _chatMessages = decodedList.map((listItem) {
-      return ChatMessageEntity.fromJson(listItem);
-    }).toList();
+      final List<ChatMessageEntity> _chatMessages = decodedList.map((listItem) {
+        return ChatMessageEntity.fromJson(listItem);
+      }).toList();
 
-    print(_chatMessages.length);
+      print(_chatMessages.length);
 
-    //final state of the messages
-    setState(() {
-      _messages = _chatMessages;
+      //final state of the messages
+      setState(() {
+        _messages = _chatMessages;
+      });
+    }).then((_){
+      /// This will execute after the above ".then" method
+      /// is finished executing.
+      print('done!');
     });
+    /// ".then" method jumps immediately to next line which
+    /// would be this print statement while it begins
+    /// asynchronous execution of the code inside the
+    /// ".then" callback.
+    print('I executed while the above is running asynchronously within the "then" method.');
   }
 
   onMessageSent(ChatMessageEntity entity) {
