@@ -41,26 +41,37 @@ class _ChatPageState extends State<ChatPage> {
   }
 
   //TODO: Get Network Images from API
-  _getNetworkImages() async {
-    var endpointUrl = Uri.parse('https://pixelford.com/api2/images');
+  Future<List<GirlImage>> _getNetworkImages() async {
+    var endpointUrl = Uri.parse('https://gist.githubusercontent.com/hiteshsahu/f58bcca95532fde77fd0d9e94a9c3148/raw/4ef7b30240c781341f1994f12453e9e7a5c2c67d/GirlImages.json');
 
     final response = await http.get(endpointUrl);
 
     if (response.statusCode == 200) {
-      final List<dynamic> decodedList = jsonDecode(response.body) as List;
+      ///Decode the JSON file into parent format (in this case Map).
+      final Map<String, dynamic> decodedResponse = jsonDecode(response.body) as Map<String, dynamic>;
+      ///Expose the 'GirlImages' key from the decodedResponse Map.
+      final List<dynamic> decodedList = decodedResponse['GirlImages'] as List;
 
-      final List<PixelfordImage> _imageList = decodedList.map((listItem) {
-        return PixelfordImage.fromJson(listItem);
+      ///Create list of GirlImage objects composed of the items
+      ///from the decodedList.
+      final List<GirlImage> _imageList = decodedList.map((listItem) {
+        return GirlImage.fromJson(listItem);
       }).toList();
 
-      print(_imageList[0].urlFullSize);
+      print(_imageList[0].imageUrl);
+      return _imageList;
+    }
+    else{
+      /// We throw an Exception so we
+      /// don't have a "null" return case.
+      throw Exception('404 Not Found!');
     }
   }
 
   @override
   void initState() {
     _loadInitialMessages();
-    _getNetworkImages();
+    //_getNetworkImages();
     super.initState();
   }
 
@@ -85,6 +96,29 @@ class _ChatPageState extends State<ChatPage> {
       ),
       body: Column(
         children: [
+          ///URL is NOT immediately available, only
+          ///becomes available once the API call
+          ///is complete. Want to only view the image
+          ///in the "Future" when the image is ready.
+          ///
+          /// FutureBuilder widget builds a widget
+          /// when the associated "future" callback
+          /// is finished.
+          FutureBuilder<List<GirlImage>>(
+            future: _getNetworkImages(),
+            ///Returns a widget.
+            builder: (BuildContext context, AsyncSnapshot<List<GirlImage>> snapshot){
+              if(snapshot.hasData) {
+                /// Since we checked snapshot "hasData",
+                /// we add an exclamation mark to tell compiler
+                /// snapshot will NOT be null.
+                return Image.network(snapshot.data![0].imageUrl);
+              }
+              else{
+                return CircularProgressIndicator();
+              }
+            },
+          ),
           Expanded(
               child: ListView.builder(
                   itemCount: _messages.length,
