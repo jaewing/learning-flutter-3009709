@@ -98,7 +98,7 @@ class LoginPage extends StatelessWidget {
               GestureDetector(
                 onTap: () async {
                   print('Link clicked!');
-                  if (!await launch(_mainUrl)) {
+                  if (!await launchUrl(Uri.parse(_mainUrl))) {
                     throw 'Could not launch this!';
                   }
                 },

@@ -41,7 +41,15 @@ class _ChatPageState extends State<ChatPage> {
     setState(() {});
   }
 
-  final ImageRepository _imageRepo = ImageRepository();
+  /// This is where the extra call is coming from
+  /// for ImageRepository method.
+  /// Happening upon instantiation.
+  ///
+  /// This is passed to "chat_input" which is
+  /// then passed to "picker_body". Can alternatively
+  /// just create this in "picker_body" to be more efficient
+  /// and not just to be funny :)
+  //final ImageRepository _imageRepo = ImageRepository();
 
   @override
   void initState() {
@@ -69,18 +77,8 @@ class _ChatPageState extends State<ChatPage> {
         ],
       ),
       body: Column(
+
         children: [
-
-          FutureBuilder<List<GirlImage>>(
-              future: _imageRepo.getNetworkImages(),
-              builder: (BuildContext context,
-                  AsyncSnapshot<List<GirlImage>> snapshot) {
-                if (snapshot.hasData)
-                  return Image.network(snapshot.data![0].imageUrl);
-
-                return CircularProgressIndicator();
-              }),
-
           Expanded(
               child: ListView.builder(
                   itemCount: _messages.length,

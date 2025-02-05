@@ -1,8 +1,11 @@
 import 'package:chat_app/models/chat_message_entity.dart';
+import 'package:chat_app/repo/image_repository.dart';
+import 'package:chat_app/widgets/picker_body.dart';
 import 'package:flutter/material.dart';
 
 class ChatInput extends StatelessWidget {
   final Function(ChatMessageEntity) onSubmit;
+
 
   ChatInput({Key? key, required this.onSubmit}) : super(key: key);
 
@@ -35,10 +38,10 @@ class ChatInput extends StatelessWidget {
               /// us to create a pop up "add image" menu when they
               /// tap the "plus" sign in the bottom left corner of
               /// their screen on the chat page.
-              showModalBottomSheet<void>(
+              showModalBottomSheet(
                   context: context,
                   builder: (BuildContext context){
-                    return Text('Hello!');
+                    return NetworkImagePickerBody();
 
                   }
               );

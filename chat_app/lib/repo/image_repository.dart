@@ -17,7 +17,8 @@ class ImageRepository {
         return GirlImage.fromJson(listItem);
       }).toList();
 
-      print(_imageList[0].imageUrl);
+      //print(_imageList[0].imageUrl);
+      print('I was called!');
       return _imageList;
     } else {
       throw Exception('API not successful!');
