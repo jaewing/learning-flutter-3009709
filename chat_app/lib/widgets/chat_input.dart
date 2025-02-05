@@ -29,6 +29,19 @@ class ChatInput extends StatelessWidget {
           IconButton(
             onPressed: () {
               //TODO: Open a bottom sheet that shows a grid of images
+              /// showModalBottomSheet is an alternative to a menu or
+              /// dialog that prevents the user from interacting with
+              /// the rest of the app. This is a perfect widget for
+              /// us to create a pop up "add image" menu when they
+              /// tap the "plus" sign in the bottom left corner of
+              /// their screen on the chat page.
+              showModalBottomSheet<void>(
+                  context: context,
+                  builder: (BuildContext context){
+                    return Text('Hello!');
+
+                  }
+              );
             },
             icon: Icon(
               Icons.add,
