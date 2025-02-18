@@ -14,10 +14,10 @@ class NetworkImagePickerBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return FutureBuilder<List<PixelfordImage>>(
+    return FutureBuilder<List<GirlImage>>(
         future: _imageRepo.getNetworkImages(),
         builder: (BuildContext context,
-            AsyncSnapshot<List<PixelfordImage>> snapshot) {
+            AsyncSnapshot<List<GirlImage>> snapshot) {
           if (snapshot.hasData) {
             return GridView.builder(
               itemCount: snapshot.data!.length,
@@ -26,14 +26,24 @@ class NetworkImagePickerBody extends StatelessWidget {
 
                 return GestureDetector(
                     onTap: () {
-                      onImageSelected(snapshot.data![index].urlSmallSize);
+                      onImageSelected(snapshot.data![index].imageUrl);
                     },
-                    child: Image.network(snapshot.data![index].urlSmallSize));
+                    child: Image.network(snapshot.data![index].imageUrl));
               },
               gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                   crossAxisSpacing: 2,
                   mainAxisSpacing: 2,
                   maxCrossAxisExtent: MediaQuery.of(context).size.width * 0.5),
+            );
+          }
+
+          /// Here we handle exceptions we might encounter
+          /// while trying to choose an image to add to
+          /// our text messages.
+          else if(snapshot.hasError){
+            return Padding(
+              padding: const EdgeInsets.all(24.0),
+              child: Text('This is the error: ${snapshot.error}'),
             );
           }
 
