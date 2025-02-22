@@ -1,4 +1,5 @@
 import 'package:chat_app/models/chat_message_entity.dart';
+import 'package:chat_app/services/auth_service.dart';
 import 'package:flutter/material.dart';
 
 class ChatBubble extends StatelessWidget {
@@ -10,6 +11,23 @@ class ChatBubble extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// Again we create another class instance of
+    /// AuthService to call the getUserName method.
+    ///
+    /// Seeing now how messy this can get?
+    /// Way too many redundant objects being created.
+    /// Data in one state context would be overwritten
+    /// by another class instance being instantiated.
+    ///
+    /// Because of this, we will instead implement one of
+    /// the defined state management concepts that are
+    /// commonly used in Flutter.
+    ///
+    /// Link to State Management options,
+    /// https://docs.flutter.dev/data-and-backend/state-mgmt/options
+    ///
+    /// We will implement the "Provider" option.
+    // bool isAuthor = entity.author.userName == AuthService().getUserName();
     bool isAuthor = entity.author.userName == "poojab26";
 
     return Align(
@@ -38,7 +56,7 @@ class ChatBubble extends StatelessWidget {
         ),
         margin: EdgeInsets.all(10),
         decoration: BoxDecoration(
-            color: isAuthor ? Theme.of(context).primaryColor : Colors.black87,
+            color: isAuthor ? Colors.black87 : Theme.of(context).primaryColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),

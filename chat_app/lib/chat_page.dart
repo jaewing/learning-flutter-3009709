@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'package:chat_app/models/image_model.dart';
 import 'package:chat_app/repo/image_repository.dart';
+import 'package:chat_app/services/auth_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:chat_app/models/chat_message_entity.dart';
 import 'package:chat_app/widgets/chat_bubble.dart';
@@ -70,14 +71,29 @@ class _ChatPageState extends State<ChatPage> {
       ),
       body: Column(
         children: [
-
           Expanded(
               child: ListView.builder(
                   itemCount: _messages.length,
                   itemBuilder: (context, index) {
                     return ChatBubble(
                         alignment:
-                            _messages[index].author.userName == 'poojab26'
+                        /// Here we implement using the AuthService
+                        /// class by calling the getUserName method.
+                        /// We do so by creating an instance of a class.
+                        ///
+                        /// However, we can see how this can become quite
+                        /// messy with a bunch of class instances being
+                        /// instantiated of auth_service.
+                        ///
+                        /// We will instead implement a state management
+                        /// option.
+                        ///
+                        /// Link to State Management options,
+                        /// https://docs.flutter.dev/data-and-backend/state-mgmt/options
+                        ///
+                        /// We will implement the "Provider" option.
+                        //   _messages[index].author.userName == AuthService().getUserName()
+                        _messages[index].author.userName == "poojab26"
                                 ? Alignment.centerRight
                                 : Alignment.centerLeft,
                         entity: _messages[index]);

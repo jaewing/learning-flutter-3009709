@@ -57,53 +57,73 @@ class LoginPage extends StatelessWidget {
                     color: Colors.blueGrey),
               ),
               verticalSpacing(24),
-              Container(
-                height: 200,
-                width: MediaQuery.of(context).size.width,
-                decoration: BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.fitWidth,
-                        image: AssetImage('assets/illustration.png')),
-                    borderRadius: BorderRadius.circular(24)),
-              ),
-              verticalSpacing(24),
-
-              Form(
-                key: _formkey,
-                child: Column(
-                  children: [
-                    LoginTextField(
-                      hintText: "Enter your username",
-                      validator: (value) {
-                        if (value != null &&
-                            value.isNotEmpty &&
-                            value.length < 5) {
-                          return "Your username should be more than 5 characters";
-                        } else if (value != null && value.isEmpty) {
-                          return "Please type your username";
-                        }
-                        return null;
-                      },
-                      controller: userNameController,
-                    ),
-                    verticalSpacing(24),
-                    LoginTextField(
-                      hasAsterisks: true,
-                      controller: passwordController,
-                      hintText: 'Enter your password',
-                    ),
-                  ],
+              Padding(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.2,
+                  right: MediaQuery.of(context).size.width * 0.2,
+                  top: 20,
+                  bottom: 20,
+                ),
+                child: Container(
+                  height: 200,
+                  width: MediaQuery.of(context).size.width,
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                        fit: BoxFit.fitWidth,
+                          image: AssetImage('assets/illustration.png')),
+                      borderRadius: BorderRadius.circular(24)),
                 ),
               ),
               verticalSpacing(24),
-              ElevatedButton(
-                  onPressed: () {
-                    loginUser(context);
-                  },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
-                  )),
+
+              Padding(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.1,
+                  right: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    children: [
+                      LoginTextField(
+                        hintText: "Enter your username",
+                        validator: (value) {
+                          if (value != null &&
+                              value.isNotEmpty &&
+                              value.length < 5) {
+                            return "Your username should be more than 5 characters";
+                          } else if (value != null && value.isEmpty) {
+                            return "Please type your username";
+                          }
+                          return null;
+                        },
+                        controller: userNameController,
+                      ),
+                      verticalSpacing(24),
+                      LoginTextField(
+                        hasAsterisks: true,
+                        controller: passwordController,
+                        hintText: 'Enter your password',
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              verticalSpacing(24),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.1,
+                  right: MediaQuery.of(context).size.width * 0.1,
+                ),
+                child: ElevatedButton(
+                    onPressed: () {
+                      loginUser(context);
+                    },
+                    child: Text(
+                      'Login',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+                    )),
+              ),
               GestureDetector(
                 onTap: () async {
                   print('Link clicked!');
