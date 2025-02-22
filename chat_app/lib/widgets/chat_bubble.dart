@@ -8,13 +8,20 @@ class ChatBubble extends StatelessWidget {
   const ChatBubble({Key? key, required this.alignment, required this.entity})
       : super(key: key);
 
+
+
   @override
   Widget build(BuildContext context) {
+
+    /// Used to change color of each bubble
+    /// appropriately depending on user.
+    bool isAuthor = entity.author.userName == "poojab26";
+
     return Align(
       alignment: alignment,
       child: Container(
         constraints:
-            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.5),
+            BoxConstraints(maxWidth: MediaQuery.of(context).size.width * 0.6),
         padding: EdgeInsets.all(24),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -25,18 +32,32 @@ class ChatBubble extends StatelessWidget {
             ),
             if (entity.imageUrl != null)
               //TODO: Make image rounded
-              Image.network(
-                '${entity.imageUrl}',
-                height: 200,
+              Container(
+                height: 250,
+                ///Width of parent (device screen).
+                //width: MediaQuery.of(context).size.width,
+                ///Container has built image formatting
+                ///capabilities via the image property
+                ///and the DecorationImage class. No need
+                ///for child widget of Container.
+                decoration: BoxDecoration(
+                    image: DecorationImage(
+                        image: NetworkImage(entity.imageUrl!),
+                        fit: BoxFit.cover),
+                    borderRadius: BorderRadius.circular(24)
+                ),
               )
           ],
         ),
-        //TODO: Reduce padding
-        margin: EdgeInsets.all(50),
+        //TODOne: Reduce padding
+        margin: EdgeInsets.all(10),
         decoration: BoxDecoration(
 
-          //TODO: Update color depending on current author
-            color: Colors.grey,
+            //TODO: Update color depending on current author
+            /// One liner conditional statement checking if
+            /// isAuthor bool value. If true, color is set
+            /// to primaryColor. Else, color is set to Colors.black87.
+            color: isAuthor ?  Colors.black87 : Theme.of(context).primaryColor,
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(12),
                 topRight: Radius.circular(12),

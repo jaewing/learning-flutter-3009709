@@ -82,7 +82,7 @@ class _ChatInputState extends State<ChatInput> {
               if (_selectedImageUrl.isNotEmpty)
                 Image.network(
                   _selectedImageUrl,
-                  height: 50,
+                  height: 200,
                 ),
             ],
           )),

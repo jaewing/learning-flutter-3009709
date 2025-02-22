@@ -31,6 +31,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(24.0),
@@ -55,47 +56,84 @@ class LoginPage extends StatelessWidget {
                     fontSize: 20,
                     color: Colors.blueGrey),
               ),
-              //TODO: Make rounded borders
-              Image.asset(
-                'assets/illustration.png',
-                height: 200,
+              /// Custom Widget we made from utils folder.
+              verticalSpacing(24),
+              //TODOne: Make rounded borders
+              Padding(
+                padding: EdgeInsets.only(
+                    left: MediaQuery.of(context).size.width * 0.20,
+                    right: MediaQuery.of(context).size.width * 0.20,
+                ),
+                child: Container(
+                  height: MediaQuery.of(context).size.height * 0.35,
+                  ///Container has built image formatting
+                  ///capabilities via the image property
+                  ///and the DecorationImage class. No need
+                  ///for child widget of Container.
+                  ///
+                  /// Here we use AssetImage instead of NetworkImage
+                  decoration: BoxDecoration(
+                      image: DecorationImage(
+                          image: AssetImage('assets/illustration.png'),
+                              /// Fills as much as parent allows.
+                              /// I used Padding to dictate the width of the image.
+                              fit: BoxFit.cover,
+                      ),
+                      borderRadius: BorderRadius.circular(24)
+                  ),
+                ),
               ),
-              Form(
-                key: _formkey,
-                child: Column(
-                  children: [
-                    LoginTextField(
-                      hintText: "Enter your username",
-                      validator: (value) {
-                        if (value != null &&
-                            value.isNotEmpty &&
-                            value.length < 5) {
-                          return "Your username should be more than 5 characters";
-                        } else if (value != null && value.isEmpty) {
-                          return "Please type your username";
-                        }
-                        return null;
-                      },
-                      controller: userNameController,
-                    ),
-                    verticalSpacing(24),
-                    LoginTextField(
-                      hasAsterisks: true,
-                      controller: passwordController,
-                      hintText: 'Enter your password',
-                    ),
-                  ],
+              /// Custom Widget we made from utils folder.
+              verticalSpacing(24),
+
+              Padding(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.15,
+                  right: MediaQuery.of(context).size.width * 0.15,
+                ),
+                child: Form(
+                  key: _formkey,
+                  child: Column(
+                    children: [
+                      LoginTextField(
+                        hintText: "Enter your username",
+                        validator: (value) {
+                          if (value != null &&
+                              value.isNotEmpty &&
+                              value.length < 5) {
+                            return "Your username should be more than 5 characters";
+                          } else if (value != null && value.isEmpty) {
+                            return "Please type your username";
+                          }
+                          return null;
+                        },
+                        controller: userNameController,
+                      ),
+                      verticalSpacing(24),
+                      LoginTextField(
+                        hasAsterisks: true,
+                        controller: passwordController,
+                        hintText: 'Enter your password',
+                      ),
+                    ],
+                  ),
                 ),
               ),
               verticalSpacing(24),
-              ElevatedButton(
-                  onPressed: () {
-                    loginUser(context);
-                  },
-                  child: Text(
-                    'Login',
-                    style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
-                  )),
+              Padding(
+                padding: EdgeInsets.only(
+                  left: MediaQuery.of(context).size.width * 0.15,
+                  right: MediaQuery.of(context).size.width * 0.15,
+                ),
+                child: ElevatedButton(
+                    onPressed: () {
+                      loginUser(context);
+                    },
+                    child: Text(
+                      'Login',
+                      style: TextStyle(fontSize: 24, fontWeight: FontWeight.w300),
+                    )),
+              ),
               GestureDetector(
                 onTap: () async {
                   print('Link clicked!');
