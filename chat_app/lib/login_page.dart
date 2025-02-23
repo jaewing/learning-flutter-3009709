@@ -1,19 +1,33 @@
+import 'package:chat_app/services/auth_service.dart';
 import 'package:chat_app/utils/brand_color.dart';
 import 'package:chat_app/utils/spaces.dart';
 import 'package:chat_app/widgets/login_text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:social_media_buttons/social_media_buttons.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:provider/provider.dart';
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
 
   final _formkey = GlobalKey<FormState>();
 
-  void loginUser(context) {
+  /// Changed return type from "void" to "Future<void>"
+  ///
+  /// Have to be careful with context. "context" without
+  /// explicit definition of BuildContext type takes on
+  /// the type "dynamic" which can provide you a context
+  /// instance that isn't appropriate for your use.
+  Future<void> loginUser(BuildContext context) async{
     if (_formkey.currentState != null && _formkey.currentState!.validate()) {
       print(userNameController.text);
       print(passwordController.text);
+
+      /// Here we add the corresponding code to call our loginUser
+      /// method from the AuthService class.
+      ///
+      /// Again, make sure to import the "Provider" library.
+      await context.read<AuthService>().loginUser(userNameController.text);
 
       Navigator.pushReplacementNamed(context, '/chat',
           arguments: '${userNameController.text}');
@@ -97,8 +111,8 @@ class LoginPage extends StatelessWidget {
               ),
               verticalSpacing(24),
               ElevatedButton(
-                  onPressed: () {
-                    loginUser(context);
+                  onPressed: () async {
+                    await loginUser(context);
                   },
                   child: Text(
                     'Login',
