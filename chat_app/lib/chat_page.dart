@@ -61,6 +61,11 @@ class _ChatPageState extends State<ChatPage> {
         actions: [
           IconButton(
               onPressed: () {
+                /// Here we now call our logoutUser method
+                /// from AuthService to clear the shared
+                /// preferences upon user selection to
+                /// logout from app.
+                context.read<AuthService>().logoutUser();
                 Navigator.pushReplacementNamed(context, '/');
                 print('Icon pressed!');
               },

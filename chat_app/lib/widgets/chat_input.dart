@@ -18,13 +18,19 @@ class _ChatInputState extends State<ChatInput> {
 
   final chatMessageController = TextEditingController();
 
-  void onSendButtonPressed() {
+  void onSendButtonPressed() async{
+    /// Since now we have made getUserName method a
+    /// Future method me must now "await" this value.
+    String? userNameFromCache = await context.read<AuthService>().getUserName();
     print('ChatMessage: ${chatMessageController.text}');
     final newChatMessage = ChatMessageEntity(
         text: chatMessageController.text,
         id: "244",
         createdAt: DateTime.now().millisecondsSinceEpoch,
-        author: Author(userName: context.read<AuthService>().getUserName()));
+        /// We then assign the variable to "userName" with
+        /// the assertion to the compiler the variable
+        /// will NOT be null with the exclamation mark.
+        author: Author(userName: userNameFromCache!));
 
     if (_selectedImageUrl.isNotEmpty) {
       newChatMessage.imageUrl = _selectedImageUrl;
