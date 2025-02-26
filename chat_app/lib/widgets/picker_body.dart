@@ -20,19 +20,19 @@ class NetworkImagePickerBody extends StatelessWidget {
           color: Colors.white,
           borderRadius: BorderRadius.only(
               topLeft: Radius.circular(24), topRight: Radius.circular(24))),
-      child: FutureBuilder<List<PixelfordImage>>(
+      child: FutureBuilder<List<GirlImage>>(
           future: _imageRepo.getNetworkImages(),
           builder: (BuildContext context,
-              AsyncSnapshot<List<PixelfordImage>> snapshot) {
+              AsyncSnapshot<List<GirlImage>> snapshot) {
             if (snapshot.hasData) {
               return GridView.builder(
                 itemCount: snapshot.data!.length,
                 itemBuilder: (context, index) {
                   return GestureDetector(
                       onTap: () {
-                        onImageSelected(snapshot.data![index].urlSmallSize);
+                        onImageSelected(snapshot.data![index].imageUrl);
                       },
-                      child: Image.network(snapshot.data![index].urlSmallSize));
+                      child: Image.network(snapshot.data![index].imageUrl));
                 },
                 gridDelegate: SliverGridDelegateWithMaxCrossAxisExtent(
                     crossAxisSpacing: 2,

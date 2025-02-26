@@ -50,8 +50,23 @@ class _ChatPageState extends State<ChatPage> {
 
   @override
   Widget build(BuildContext context) {
-    final username = ModalRoute.of(context)!.settings.arguments as String;
-
+    /// Fix username not being updated from test
+    /// IconButton press by changing from ModalRoute
+    /// to use our service class via the ProvidePackage.
+    ///
+    /// Problem is, with "read" we only read the data
+    /// once and don't "listen" for change notifications.
+    ///
+    /// "watch", on the other hand, will listen for change
+    /// notifications constantly.
+    ///
+    /// The data that is being watched is stored on the local
+    /// device and not in a memory variable. This of course is
+    /// because we are using the SharedPreferences package which
+    /// wraps itself around the device specific shared preferences.
+    /// Aka, "caching" the data.
+    //final username = ModalRoute.of(context)!.settings.arguments as String;
+    final username = context.watch<AuthService>().getUserName();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
@@ -59,6 +74,14 @@ class _ChatPageState extends State<ChatPage> {
         elevation: 0,
         title: Text('Hi $username!'),
         actions: [
+          /// IconButton we are using to create our test
+          /// button for updating "username" from our
+          /// Shared Preferences. 
+          IconButton(
+              onPressed: () {
+                context.read<AuthService>().updateUserName("New Name!");
+              },
+              icon: Icon(Icons.airline_seat_individual_suite)),
           IconButton(
               onPressed: () {
                 context.read<AuthService>().logoutUser();
