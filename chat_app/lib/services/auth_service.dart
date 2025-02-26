@@ -16,6 +16,23 @@ class AuthService extends ChangeNotifier{
     }
   }
 
+  /// Here we will return a boolean value
+  /// telling us whether the user is
+  /// logged in or not.
+  Future<bool> isLoggedIn() async{
+    /// Need to await for the "username"
+    /// to return value so have to setup
+    /// method asynchronously.
+    /// Ensures we have the data before we
+    /// do our conditional check.
+    String? username = await _prefs.getString('userName');
+    /// If username is "null" we know its the
+    /// first time the particular user is signing
+    /// in.
+    if(username == null) return false;
+    return true;
+  }
+
   void logoutUser() {
     _prefs.clear();
   }
